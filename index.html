@@ -1,1 +1,195 @@
+<!doctype html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f2f0e9">
+	<meta name="description" content="Er komt iets moois aan. Binnenkort online.">
+	<title>Binnenkort online</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f2f0e9;
+			--ink: #193b35;
+			--muted: #64736a;
+			--accent: #d2694a;
+			--line: rgba(25, 59, 53, .2);
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			min-width: 320px;
+			min-height: 100vh;
+			margin: 0;
+			color: var(--ink);
+			background: var(--paper);
+			font-family: "DM Sans", sans-serif;
+		}
+
+		.page {
+			display: grid;
+			min-height: 100vh;
+			grid-template-rows: auto 1fr auto;
+			padding: 32px clamp(24px, 6vw, 88px) 24px;
+		}
+
+		header, footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 20px;
+		}
+
+		.wordmark {
+			font-size: 13px;
+			font-weight: 700;
+			letter-spacing: .12em;
+			text-transform: uppercase;
+		}
+
+		.top-note, footer {
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		main {
+			display: grid;
+			width: min(1120px, 100%);
+			align-items: center;
+			justify-self: center;
+			grid-template-columns: 1fr .82fr;
+			gap: clamp(40px, 8vw, 112px);
+			padding: 64px 0;
+		}
+
+		.copy { max-width: 560px; }
+
+		.eyebrow {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin: 0 0 24px;
+			color: var(--accent);
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: .16em;
+			text-transform: uppercase;
+		}
+
+		.eyebrow::before {
+			width: 26px;
+			height: 1px;
+			background: currentColor;
+			content: "";
+		}
+
+		h1 {
+			max-width: 620px;
+			margin: 0;
+			font-family: "Playfair Display", Georgia, serif;
+			font-size: clamp(48px, 7vw, 88px);
+			font-weight: 500;
+			line-height: 1.04;
+		}
+
+		h1 span { color: var(--accent); }
+
+		.description {
+			max-width: 390px;
+			margin: 24px 0 0;
+			color: var(--muted);
+			font-size: 16px;
+			line-height: 1.7;
+		}
+
+		.image-wrap {
+			position: relative;
+			min-height: 420px;
+			overflow: hidden;
+			background: #d8ded4;
+		}
+
+		.image-wrap::after {
+			position: absolute;
+			inset: 12px;
+			border: 1px solid rgba(255, 255, 255, .6);
+			content: "";
+			pointer-events: none;
+		}
+
+		.image-wrap img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			min-height: 420px;
+			object-fit: cover;
+			animation: reveal .8s ease-out both;
+		}
+
+		.image-caption {
+			position: absolute;
+			right: 24px;
+			bottom: 24px;
+			z-index: 1;
+			padding: 9px 12px;
+			color: var(--ink);
+			background: var(--paper);
+			font-size: 11px;
+			letter-spacing: .04em;
+		}
+
+		footer { border-top: 1px solid var(--line); padding-top: 18px; }
+
+		@keyframes reveal {
+			from { opacity: 0; transform: scale(1.025); }
+			to { opacity: 1; transform: scale(1); }
+		}
+
+		@media (max-width: 700px) {
+			.page { padding: 24px 22px 18px; }
+			.top-note { max-width: 120px; text-align: right; }
+			main { grid-template-columns: 1fr; gap: 36px; padding: 56px 0 42px; }
+			h1 { font-size: clamp(48px, 13vw, 70px); }
+			.description { font-size: 15px; }
+			.image-wrap, .image-wrap img { min-height: 280px; max-height: 40vh; }
+			footer { align-items: flex-start; font-size: 11px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header>
+			<div class="wordmark">Jouw merk</div>
+			<div class="top-note">Een nieuwe plek is in de maak</div>
+		</header>
+
+		<main>
+			<section class="copy" aria-labelledby="page-title">
+				<p class="eyebrow">Binnenkort online</p>
+				<h1 id="page-title">Er komt iets <span>moois</span> aan.</h1>
+				<p class="description">We werken achter de schermen aan iets nieuws. Nog even geduld, we zijn er bijna.</p>
+			</section>
+
+			<div class="image-wrap">
+				<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Zonlicht valt door een rustig groen bos">
+				<span class="image-caption">Iets nieuws groeit</span>
+			</div>
+		</main>
+
+		<footer>
+			<span>© <span id="year"></span> Jouw merk</span>
+			<span>Met aandacht gemaakt</span>
+		</footer>
+	</div>
+	<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
 
